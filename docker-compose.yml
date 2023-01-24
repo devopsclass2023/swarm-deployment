@@ -15,3 +15,17 @@ services:
         failure_action: rollback
       restart_policy:
         condition: on-failure
+
+
+  service-html2:
+    image: nexus.opxcloud.io:8888/html2:latest
+    ports:
+      - 6002:80
+    deploy:
+      mode: global
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
