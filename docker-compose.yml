@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+
+  service-html1:
+    image: nexus.opxcloud.io:8888/html1:latest
+    ports:
+      - 6001:80
+    deploy:
+      mode: global
+     # replicas: 3
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
